@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #232a1c;
+  background: #f3efdd;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: #26331f;
+  color: #f3efdd;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+header .tagline {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.95rem;
+  color: #a9b98a;
+  margin-top: 0.4rem;
+}
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  background: #4a5d3a;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.5rem;
+  height: 2px;
+  width: 0;
+  background: #c99a3a;
+  transition: width 0.25s ease;
+}
+
+nav ul li a:hover::after {
+  width: calc(100% - 2rem);
+}
+
+/* ===== MAIN ===== */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+main section {
+  margin-bottom: 2rem;
+}
+
+main h2 {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #26331f;
+  margin-bottom: 0.6rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #26331f;
+  color: #a9b98a;
+  text-align: center;
+  padding: 1.2rem;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.8rem;
+}
+
