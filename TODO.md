@@ -33,13 +33,6 @@ Tracking against the WPR261 Project brief (100 marks total).
 - [ ] Field notes from visiting a location
 - [ ] Self-created comparison criteria for the theme
 
-### Logistics
-- [ ] Nominate team leader (responsible for uploading final project)
-- [ ] Confirm group is 3–4 people, no changes made
-- [ ] Submit & present M1 before starting M2 submission
-
----
-
 ## Milestone 2 — JavaScript Implementation (40 marks)
 
 - [ ] Event listener on Search button → filters items by search query
