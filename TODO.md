@@ -11,7 +11,7 @@ Tracking against the WPR261 Project brief (100 marks total).
 - [x] Nav bar (sticky, hover underline)
 - [x] Search section (markup only, no JS yet)
 - [x] Results section (static sample cards: title, short description, thumbnail placeholder)
-- [ ] Detailed information section (full description, 3+ facts, image, location/origin)
+- [x] Detailed information section (full description, 3+ facts, image, location/origin)
 - [ ] Favourites section (visual "saved items" area)
 - [ ] Comparison section (side-by-side layout for 2 items)
 - [ ] "Why we chose this theme / how we gathered the information" page or section
@@ -21,7 +21,7 @@ Tracking against the WPR261 Project brief (100 marks total).
 - [x] Nav styled (sticky, hover state)
 - [x] Search bar styled
 - [x] Results grid + card styling
-- [ ] Detail section styling
+- [x] Detail section styling
 - [ ] Favourites section styling
 - [ ] Comparison section styling
 - [ ] Overall visual theme pass (make sure it reads as "Cape Town hidden attractions", not generic)

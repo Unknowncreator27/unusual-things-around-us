@@ -7,21 +7,57 @@
 body {
   font-family: Georgia, 'Times New Roman', serif;
   color: #232a1c;
-  background: #f3efdd;background-image: url("../res/wood2.jpg");
-  background-size: cover;
+  background: #f3efdd;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../res/wood2.jpg") center / cover no-repeat;
+  opacity: 0.4;
 }
 
 /* ===== HEADER ===== */
 header {
-  background: #26331f;
+  background: #26331f url("../res/wood.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
   color: #f3efdd;
   padding: 2rem 1.5rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaf-corner {
+  position: absolute;
+  top: -1rem;
+  width: 180px;
+  height: 140px;
+  background-image: url("../res/Leaves.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.leaf-left {
+  left: -1rem;
+}
+
+.leaf-right {
+  right: -1rem;
+  transform: scaleX(-1);
 }
 
 header h1 {
   font-size: 2rem;
   letter-spacing: 0.02em;
+  position: relative;
 }
 
 header .tagline {
@@ -29,6 +65,7 @@ header .tagline {
   font-size: 0.95rem;
   color: #a9b98a;
   margin-top: 0.4rem;
+  position: relative;
 }
 
 /* ===== NAV ===== */
@@ -167,6 +204,92 @@ main h2 {
 .card-body p {
   font-size: 0.85rem;
   color: #66684f;
+}
+
+/* ===== DETAIL ===== */
+.detail-card {
+  background: #f3efdd;
+  border: 1px solid #d9d0a9;
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding: 1.2rem;
+}
+
+.detail-thumb {
+  flex: 0 0 200px;
+  height: 150px;
+  background: #4a5d3a;
+  color: #f3efdd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.detail-body {
+  flex: 1 1 260px;
+}
+
+.detail-body h3 {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #26331f;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.full-desc {
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.detail-body h4 {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #66684f;
+  margin-bottom: 0.4rem;
+}
+
+.facts {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.facts li {
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  border-bottom: 1px solid #e8e2c6;
+  font-size: 0.88rem;
+  position: relative;
+}
+
+.facts li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #a15230;
+}
+
+.meta {
+  background: #e8e2c6;
+  border: 1px solid #d9d0a9;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.meta dt {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #66684f;
+}
+
+.meta dd {
+  margin-top: 0.15rem;
 }
 
 /* ===== FOOTER ===== */
