@@ -176,7 +176,12 @@ main h2 {
 .card {
   background: #f3efdd;
   border: 1px solid #d9d0a9;
+  border-radius: 10px;
   width: 210px;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .thumb {
@@ -192,6 +197,8 @@ main h2 {
   overflow: hidden;
   border-radius: 10px;
 }
+
+
 
 .thumb img {
   width: 100%;
@@ -321,6 +328,7 @@ main h2 {
 .fav-card {
   background: #f3efdd;
   border: 1px solid #d9d0a9;
+  border-radius: 10px;
   width: 150px;
   padding: 0.7rem;
   text-align: center;
@@ -352,11 +360,6 @@ main h2 {
   color: #26331f;
 }
 
-.fav-empty-note {
-  font-size: 0.82rem;
-  font-style: italic;
-  color: #66684f;
-}
 
 /* ===== COMPARISON ===== */
 .compare-table {
@@ -398,10 +401,17 @@ main h2 {
 
 #how-gathered a {
   color: #66684f;
+  text-decoration: none;
+}
+
+#how-gathered a:hover {
+  color: #66684f;
+  text-decoration: underline;
 }
 
 #how-gathered ul{
   padding-left: 4rem;
+  list-style: none;
 }
 
 #how-gathered h1, p {
