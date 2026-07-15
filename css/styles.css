@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 body {
@@ -387,6 +388,42 @@ main h2 {
   font-size: 0.78rem;
   text-transform: uppercase;
   color: #66684f;
+}
+
+#how-gathered {
+  background-color: #f3efdd;
+  padding: 1rem;
+  
+}
+
+#how-gathered a {
+  color: #66684f;
+}
+
+#how-gathered ul{
+  padding-left: 4rem;
+}
+
+#how-gathered h1, p {
+  text-align: center;
+}
+
+#how-gathered h2 {
+  padding-left: 2.5rem;
+}
+
+#palette-left {
+  width: 7cm;
+  height: 7cm;
+  position: absolute;     
+  left: 10%;            
+}
+
+#palette-right {
+  width: 7cm;
+  height: 7cm;
+  position: absolute;     
+  right: 10%;            
 }
 
 /* ===== FOOTER ===== */
