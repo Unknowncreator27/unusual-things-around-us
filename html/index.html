@@ -41,38 +41,18 @@
 
     <section id="results-section">
       <h2>Results</h2>
-      <div class="grid">
-
-        <article class="card">
-          <div class="thumb"><img src="../res/Cape_Town_Noon_Gun_Firing.jpg" alt="Smoke from the Noon Gun firing on Signal Hill"></div>
-          <div class="card-body">
-            <h3>The Noon Gun</h3>
-            <p>A cannon on Signal Hill fired by hand at exactly noon every day since 1806 - most locals set their watches by it without ever seeing it.</p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="../res/prestwich.jpg" alt="Prestwich Memorial Visitors Centre entrance"></div>
-          <div class="card-body">
-            <h3>Prestwich Memorial</h3>
-            <p>A quiet ossuary near the V&A Waterfront holding the remains of hundreds of people uncovered during construction in the early 2000s.</p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="thumb"><img src="../res/truth-coffee.jpg" alt="Truth Coffee moss and neon sign"></div>
-          <div class="card-body">
-            <h3>Truth Coffee HQ</h3>
-            <p>A working coffee roastery styled entirely like a Victorian steampunk workshop, gears and all, tucked into a converted warehouse.</p>
-          </div>
-        </article>
-
+      <div class="grid" id="grid">
+        
+        <!-- Removed the articles as Js will fill it -->
       </div>
     </section>
 
     <section id="detail-section">
       <h2>Details</h2>
-      <article class="detail-card">
+      <div id="detailContainer">
+        <p class="placeholder-text">Select an attraction above to view its details</p>
+      </div>
+      <!-- <article class="detail-card">
         <div class="detail-thumb"><img src="../res/Cape_Town_Noon_Gun_Firing.jpg" alt="Smoke from the Noon Gun firing on Signal Hill"></div>
         <div class="detail-body">
           <h3>The Noon Gun</h3>
@@ -90,7 +70,7 @@
             <dd>Lion Battery, Signal Hill, Cape Town - established 1806</dd>
           </dl>
         </div>
-      </article>
+      </article> -->
     </section>
 
     <section id="favourites-section">
@@ -138,6 +118,6 @@
   <footer>
     <p>&copy; 2026 The Unusual Things Around Us</p>
   </footer>
-
+  <script src="../Js/functionality.js"></script>
 </body>
 </html>
