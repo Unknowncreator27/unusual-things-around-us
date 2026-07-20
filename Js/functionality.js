@@ -73,6 +73,29 @@ function displayItems(itemsToDisplay){
         img.src = item.image
         img.alt = item.altText
 
+        //Set up the toggling for the star icons(favorite/unfavorite)
+        const favoriteItem = new Set() //To prevent possible duplicate values
+        const starImage = document.createElement("img")
+        starImage.src = favoriteItem.has(item.id) ? "../res/favorite.png" : "../res/unfavorite.png"
+        starImage.alt = favoriteItem.has(item.id) ? "Favorited star" : "Unfavorited Star"
+        starImage.classList.add("fav-star")
+        thumbDiv.appendChild(img)
+        thumbDiv.appendChild(starImage)
+
+        starImage.addEventListener('click', (e) => {
+            e.stopPropagation()
+            if (favoriteItem.has(item.id)) {
+                favoriteItem.delete(item.id)
+                starImage.src = '../res/unfavorite.png'
+                starImage.alt = "Unfavorited Star"
+            }
+            else {
+                favoriteItem.add(item.id)
+                starImage.src = '../res/favorite.png'
+                starImage.alt = "Favorited Star"
+            }
+        })
+
         thumbDiv.appendChild(img)
 
         // Create the card body wrapper
