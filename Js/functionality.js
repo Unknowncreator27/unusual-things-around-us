@@ -1,6 +1,7 @@
 const searchBar = document.getElementById('searchInput')
 const searchButton = document.getElementById('searchBtn')
 const resultsGrid = document.getElementById('grid')
+const favoriteItem = new Set() //To prevent possible duplicate values
 
 // Data array containing attractions
 const attractions = [
@@ -48,6 +49,41 @@ const attractions = [
 
 ]
 
+//Function to display only favorites items under its own section
+const favRow = document.getElementById('fav-row')
+
+function displayFavorites() {
+    favRow.innerHTML = ""
+
+    const favoriteItems = attractions.filter(item => favoriteItem.has(item.id))
+
+    if (favoriteItems.length === 0) {
+        favRow.innerHTML = "<p class='placeholder-text'>No favourites yet — click a star to add one.</p>"
+        return
+    }
+
+    favoriteItems.forEach(item => {
+        const favCard = document.createElement('article')
+        favCard.classList.add('fav-card')
+
+        const favThumb = document.createElement('div')
+        favThumb.classList.add('fav-thumb')
+
+        const img = document.createElement('img')
+        img.src = item.image
+        img.alt = item.altText
+
+        favThumb.appendChild(img)
+
+        const title = document.createElement('h4')
+        title.textContent = item.title
+
+        favCard.appendChild(favThumb)
+        favCard.appendChild(title)
+        favRow.appendChild(favCard)
+    })
+}
+
 // functions to dynamically build and display the cards
 function displayItems(itemsToDisplay){
     // clear out any previous results first to avoid clutter
@@ -81,7 +117,6 @@ function displayItems(itemsToDisplay){
         img.alt = item.altText
 
         //Set up the toggling for the star icons(favorite/unfavorite)
-        const favoriteItem = new Set() //To prevent possible duplicate values
         const starImage = document.createElement("img")
         starImage.src = favoriteItem.has(item.id) ? "../res/favorite.png" : "../res/unfavorite.png"
         starImage.alt = favoriteItem.has(item.id) ? "Favorited star" : "Unfavorited Star"
@@ -101,6 +136,8 @@ function displayItems(itemsToDisplay){
                 starImage.src = '../res/favorite.png'
                 starImage.alt = "Favorited Star"
             }
+
+            displayFavorites()
         })
 
         thumbDiv.appendChild(img)
@@ -131,6 +168,7 @@ function displayItems(itemsToDisplay){
         
     });
 }
+
 
 // Build a function to dynamically build the details view cards
 function showDetails(item){
@@ -205,3 +243,4 @@ searchButton.addEventListener('click', (e) => {
 })
 
 displayItems(attractions)
+
