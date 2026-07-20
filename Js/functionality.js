@@ -64,6 +64,13 @@ function displayItems(itemsToDisplay){
         // Create the main card article element for each card
         const card = document.createElement('article')
         card.classList.add('card')
+        card.style.cursor = 'pointer'
+        card.addEventListener('click', () => {
+            showDetails(item)
+        })
+
+        // append the card to the grid container
+        resultsGrid.appendChild(card)
         
         // create the thumbnail wrapper and image
         const thumbDiv = document.createElement("div")
@@ -103,6 +110,64 @@ function displayItems(itemsToDisplay){
 }
 
 // Build a function to dynamically build the details view cards
+function showDetails(item){
+    let detailContainer = document.getElementById('detailContainer')
+    detailContainer.innerHTML = ""
+
+    let detailArticle = document.createElement('article')
+    detailArticle.classList.add('detail-card')
+
+    let thumb = document.createElement('div')
+    thumb.classList.add('detail-thumb')
+    let img = document.createElement('img')
+    img.src = item.image
+    img.alt = item.altText
+    thumb.appendChild(img)
+
+    let body = document.createElement('div')
+    body.classList.add('detail-body')
+
+    let h3 = document.createElement("h3")
+    h3.textContent = item.title
+
+    let fullP = document.createElement('p')
+    fullP.classList.add('full-desc')
+    fullP.textContent = item.desc
+
+    const h4 = document.createElement('h4')
+    h4.textContent = "Interesting facts"
+
+    let ul = document.createElement('ul')
+    ul.classList.add('facts')
+    item.facts.forEach(fact => {
+        const li = document.createElement("li")
+        li.textContent = fact
+        ul.appendChild(li)
+    })
+
+    let dl = document.createElement('dl')
+    dl.classList.add('meta')
+    let dt = document.createElement('dt')
+    dt.textContent = "Location / Origin"
+    let dd = document.createElement('dd')
+    dd.textContent = item.location
+    dl.appendChild(dt)
+    dl.appendChild(dd)
+
+    body.appendChild(h3)
+    body.appendChild(fullP)
+    body.appendChild(h4)
+    body.appendChild(ul)
+    body.appendChild(dl)
+
+    detailArticle.appendChild(thumb)
+    detailArticle.appendChild(body)
+
+    detailContainer.appendChild(detailArticle)
+    //smooth scrolling to the details section to view details
+    document.getElementById('detail-section').scrollIntoView({behavior: "smooth"})
+
+}
 
 searchButton.addEventListener('click', (e) => {
     e.preventDefault()
