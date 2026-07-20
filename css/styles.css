@@ -180,18 +180,12 @@ main h2 {
   border-radius: 10px;
   width: 210px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow o.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   cursor: pointer;
   transform: translateY(-6px);
-  transition: transform 0.2s ease;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-.card:hover::after {
-  cursor: pointer;
-  transform: translateY(-4px);
   transition: transform 0.2s ease;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }

@@ -81,6 +81,7 @@ function displayFavorites() {
         favCard.appendChild(favThumb)
         favCard.appendChild(title)
         favRow.appendChild(favCard)
+
     })
 }
 
@@ -104,9 +105,6 @@ function displayItems(itemsToDisplay){
         card.addEventListener('click', () => {
             showDetails(item)
         })
-
-        // append the card to the grid container
-        resultsGrid.appendChild(card)
         
         // create the thumbnail wrapper and image
         const thumbDiv = document.createElement("div")
@@ -121,7 +119,7 @@ function displayItems(itemsToDisplay){
         starImage.src = favoriteItem.has(item.id) ? "../res/favorite.png" : "../res/unfavorite.png"
         starImage.alt = favoriteItem.has(item.id) ? "Favorited star" : "Unfavorited Star"
         starImage.classList.add("fav-star")
-        thumbDiv.appendChild(img)
+        // thumbDiv.appendChild(img)
         thumbDiv.appendChild(starImage)
 
         starImage.addEventListener('click', (e) => {
@@ -136,7 +134,6 @@ function displayItems(itemsToDisplay){
                 starImage.src = '../res/favorite.png'
                 starImage.alt = "Favorited Star"
             }
-
             displayFavorites()
         })
 
@@ -152,12 +149,11 @@ function displayItems(itemsToDisplay){
 
         const p = document.createElement('p')
         p.textContent = item.desc
-        card.appendChild(thumbDiv)
-        card.appendChild(title)
-        card.appendChild(p)
+        cardBody.appendChild(title)
+        cardBody.appendChild(p)
 
         // assemble the complete card
-        
+        card.appendChild(thumbDiv)
         card.appendChild(cardBody)
         card.style.padding = '5px'
 
