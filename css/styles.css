@@ -333,6 +333,7 @@ main h2 {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .fav-card {
@@ -342,6 +343,10 @@ main h2 {
   width: 150px;
   padding: 0.7rem;
   text-align: center;
+  transition: transform 0.2s ease , box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .fav-thumb {
@@ -370,6 +375,27 @@ main h2 {
   color: #26331f;
 }
 
+.fav-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.remove-fav-btn {
+  margin-top: 0.5rem;
+  background: #a15230;
+  color: #f3efdd;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.2s ease;
+}
+
+.remove-fav-btn:hover {
+  background: #823e22;
+}
 .card .thumb img.fav-star {
   position: absolute;
   top: 8px;

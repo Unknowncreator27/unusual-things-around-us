@@ -1,6 +1,7 @@
 const searchBar = document.getElementById('searchInput')
 const searchButton = document.getElementById('searchBtn')
 const resultsGrid = document.getElementById('grid')
+let detailContainer = document.getElementById('detailContainer')
 const favoriteItem = new Set() //To prevent possible duplicate values
 
 // Data array containing attractions
@@ -49,10 +50,11 @@ const attractions = [
 
 ]
 
-//Function to display only favorites items under its own section
-const favRow = document.getElementById('fav-row')
 
 function displayFavorites() {
+    //Function to display only favorites items under its own section
+    const favRow = document.getElementById('fav-row')
+
     favRow.innerHTML = ""
 
     const favoriteItems = attractions.filter(item => favoriteItem.has(item.id))
@@ -65,6 +67,11 @@ function displayFavorites() {
     favoriteItems.forEach(item => {
         const favCard = document.createElement('article')
         favCard.classList.add('fav-card')
+        favCard.style.cursor = 'pointer'
+
+        favCard.addEventListener('click', () => {
+            showDetails(item)
+        })
 
         const favThumb = document.createElement('div')
         favThumb.classList.add('fav-thumb')
@@ -78,8 +85,35 @@ function displayFavorites() {
         const title = document.createElement('h4')
         title.textContent = item.title
 
+        // Added a remove button here
+        let removeImg = document.createElement('img')
+        removeImg.src = '../res/close-outline.svg'
+        removeImg.alt = 'Remove Favourite'
+        removeImg.style.cursor = 'pointer'
+        removeImg.classList.add('remove-fav-img')
+        
+
+
+        removeImg.addEventListener('click', (e) =>{
+            e.stopPropagation()
+            favoriteItem.delete(item.id)
+            displayFavorites()
+            displayItems(attractions)
+
+            // check if details view is currently displaying the removed item
+            if(detailContainer) {
+                // if the details section contains an h3 element with the removed item's title, clear it
+                let currentDetailTitle = detailContainer.querySelector('h3')
+                if(currentDetailTitle && currentDetailTitle.textContent === item.title){
+                    detailContainer.innerHTML = ""
+                }
+            }
+
+        })
+
         favCard.appendChild(favThumb)
         favCard.appendChild(title)
+        favCard.appendChild(removeImg)
         favRow.appendChild(favCard)
 
     })
@@ -168,7 +202,7 @@ function displayItems(itemsToDisplay){
 
 // Build a function to dynamically build the details view cards
 function showDetails(item){
-    let detailContainer = document.getElementById('detailContainer')
+    // let detailContainer = document.getElementById('detailContainer')
     detailContainer.innerHTML = ""
 
     let detailArticle = document.createElement('article')
@@ -239,4 +273,5 @@ searchButton.addEventListener('click', (e) => {
 })
 
 displayItems(attractions)
+displayFavorites()
 
