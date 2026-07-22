@@ -48,6 +48,48 @@ const attractions = [
     location: "36 Buitenkant St, Cape Town CBD"
 },
 
+{
+    id: 'hogsback',
+    title: 'Hogsback Village',
+    desc: "Three flat-topped Hogsback Mountains with spectacular views, indigenous forest and plethora of romantic waterfalls. It's a truly versatile break-away destination.",
+    image: '../res/hogsback.jpg',
+    altText: "Stone structures with mountains in the background",
+    facts: [
+        "The village gets its name from three distinct mountain ridges in the Amathole range that look like the bristled back of a running wild pig.",
+        "It is home to an 800-year-old, 36.5-meter-tall giant yellowwood tree, which is the largest known tree in the Eastern Cape.",
+        "Many locals and visitors believe the mystical, dense forests inspired J.R.R. Tolkien’s design of The Lord of the Rings realms, as he was born in South Africa."
+    ],
+    location: "About 30 km north from the town Alice, positioned in a central-southern inland zone"
+},
+
+{
+    id: 'mariepskop',
+    title: 'Mariepskop Viewpoint',
+    desc: "Towering over the Blyde River Canyon, Mariepskop offers not just panoramic views but an adventure into the diverse and rich natural beauty of the region of the Drakensberg Mountain.",
+    image: '../res/mariepskop.jpg',
+    altText: "View form the Drakensburg Mountain",
+    facts: [
+        "Stands at 1,947 meters; on a clear day, the peak offers views stretching to the Kruger National Park and the Indian Ocean.",
+        "Spans three distinct biomes (bushveld, montane forest, and an isolated pocket of Cape fynbos) over a short distance.",
+        "Named after Chief Maripe Mashile, whose warriors successfully defended the mountain during the 1864 Moholoholo war by rolling boulders down on attackers."
+    ],
+    location: "Nature reserve in the northern Drakensberg near Hoedspruit, Limpopo and Mpumalanga"
+},
+
+{
+    id: 'cango-caves',
+    title: 'Cango Caves',
+    desc: "Though damaged through shortsighted tourism schemes in the 1960s, these caves are still worth a visit for their eerie dark tunnels and stunning limestone formations.",
+    image: '../res/cango-caves.jpg',
+    altText: "The inside of the Cango Caves",
+    facts: [
+        "The cave system is roughly 20 million years old and stretches over 4 kilometers (about 2.5 miles), though only a portion is open to the public.",
+        "The first major cavern, Van Zyl's Hall, is about 107 meters long and 54 meters wide, making it large enough to hold a full soccer field.",
+        "They are recognized as South Africa’s oldest tourist attraction, with early visitor regulations first established by Lord Charles Somerset in 1820 to protect the rock formations."
+    ],
+    location: "On the R328, Cango Valley, Oudtshoorn"
+},
+
 ]
 
 
