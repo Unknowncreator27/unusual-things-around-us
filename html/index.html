@@ -11,7 +11,7 @@
     <div class="leaf-corner leaf-left" aria-hidden="true"></div>
     <div class="leaf-corner leaf-right" aria-hidden="true"></div>
     <h1>The Unusual Things Around Us</h1>
-    <p class="tagline">Hidden tourist attractions in South Africa, hiding in plain sight.</p>
+    <p class="tagline">A hidden tourist attraction in Cape Town, hiding in plain sight.</p>
   </header>
 
   <nav>
@@ -28,7 +28,7 @@
   <main>
     <section id="home">
       <h2>Welcome</h2>
-      <p>South Africa is full of quirks most visitors walk straight past - a cannon fired daily by hand, a memorial built from bones found under a construction site, a coffee shop that looks like a steampunk workshop. This project catalogs the ones our group tracked down ourselves.</p>
+      <p>Cape Town is full of quirks most visitors walk straight past - a cannon fired daily by hand, a memorial built from bones found under a construction site, a coffee shop that looks like a steampunk workshop. This project catalogs the ones our group tracked down ourselves.</p>
     </section>
 
     <section id="search-section">
@@ -68,8 +68,19 @@
 
     <section id="comparison-section">
       <h2>Compare</h2>
-      <table class="compare-table">
-        <thead>
+      <div class="compare-controls">
+        <select id="compareSelect1" class="compare-dropdown"></select>
+        <span>VS</span>
+        <select id="compareSelect2" class="compare-dropdown"></select>
+        <button type="button" id="compareBtn" class="compare-btn">Compare</button>
+
+      </div>
+
+      <div class="comapre-table-container">
+              <table class="compare-table" id="compare-table"></table>
+      </div>
+
+        <!-- <thead>
           <tr>
             <th>Criteria</th>
             <th>The Noon Gun</th>
@@ -92,8 +103,8 @@
             <td>Heard by everyone, seen by almost no one</td>
             <td>Looks like an ordinary coffee shop from outside</td>
           </tr>
-        </tbody>
-      </table>
+        </tbody> -->
+
     </section>
   </main>
 

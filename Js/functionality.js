@@ -3,6 +3,7 @@ const searchButton = document.getElementById('searchBtn')
 const resultsGrid = document.getElementById('grid')
 let detailContainer = document.getElementById('detailContainer')
 const favoriteItem = new Set() //To prevent possible duplicate values
+const compareBtn = document.getElementById('compareBtn');
 
 // Data array containing attractions
 const attractions = [
@@ -48,50 +49,97 @@ const attractions = [
     location: "36 Buitenkant St, Cape Town CBD"
 },
 
-{
-    id: 'hogsback',
-    title: 'Hogsback Village',
-    desc: "Three flat-topped Hogsback Mountains with spectacular views, indigenous forest and plethora of romantic waterfalls. It's a truly versatile break-away destination.",
-    image: '../res/hogsback.jpg',
-    altText: "Stone structures with mountains in the background",
-    facts: [
-        "The village gets its name from three distinct mountain ridges in the Amathole range that look like the bristled back of a running wild pig.",
-        "It is home to an 800-year-old, 36.5-meter-tall giant yellowwood tree, which is the largest known tree in the Eastern Cape.",
-        "Many locals and visitors believe the mystical, dense forests inspired J.R.R. Tolkien’s design of The Lord of the Rings realms, as he was born in South Africa."
-    ],
-    location: "About 30 km north from the town Alice, positioned in a central-southern inland zone"
-},
-
-{
-    id: 'mariepskop',
-    title: 'Mariepskop Viewpoint',
-    desc: "Towering over the Blyde River Canyon, Mariepskop offers not just panoramic views but an adventure into the diverse and rich natural beauty of the region of the Drakensberg Mountain.",
-    image: '../res/mariepskop.jpg',
-    altText: "View form the Drakensburg Mountain",
-    facts: [
-        "Stands at 1,947 meters; on a clear day, the peak offers views stretching to the Kruger National Park and the Indian Ocean.",
-        "Spans three distinct biomes (bushveld, montane forest, and an isolated pocket of Cape fynbos) over a short distance.",
-        "Named after Chief Maripe Mashile, whose warriors successfully defended the mountain during the 1864 Moholoholo war by rolling boulders down on attackers."
-    ],
-    location: "Nature reserve in the northern Drakensberg near Hoedspruit, Limpopo and Mpumalanga"
-},
-
-{
-    id: 'cango-caves',
-    title: 'Cango Caves',
-    desc: "Though damaged through shortsighted tourism schemes in the 1960s, these caves are still worth a visit for their eerie dark tunnels and stunning limestone formations.",
-    image: '../res/cango-caves.jpg',
-    altText: "The inside of the Cango Caves",
-    facts: [
-        "The cave system is roughly 20 million years old and stretches over 4 kilometers (about 2.5 miles), though only a portion is open to the public.",
-        "The first major cavern, Van Zyl's Hall, is about 107 meters long and 54 meters wide, making it large enough to hold a full soccer field.",
-        "They are recognized as South Africa’s oldest tourist attraction, with early visitor regulations first established by Lord Charles Somerset in 1820 to protect the rock formations."
-    ],
-    location: "On the R328, Cango Valley, Oudtshoorn"
-},
-
 ]
 
+
+// Helper functions
+
+function populateCompareDropDown(){
+    const selectOne = document.getElementById('compareSelect1')
+    const selectTwo = document.getElementById('compareSelect2')
+
+    if(! selectOne || ! selectTwo){
+        console.log("No select found");
+        return;
+        
+    }
+
+    selectOne.innerHTML = ""
+    selectTwo.innerHTML = ""
+
+    attractions.forEach(item => {
+        let optOne = document.createElement('option')
+        optOne.value = item.id
+        optOne.textContent = item.title
+
+        let optTwo = document.createElement('option')
+        optTwo.value = item.id
+        optTwo.textContent = item.title
+
+        selectOne.appendChild(optOne)
+        selectTwo.appendChild(optTwo)
+
+    })
+
+    // default selectOne to first attraction and selectTwo to second attraction
+
+    if(attractions.length > 1){
+        selectOne.selectedIndex = 0
+        selectTwo.selectedIndex = 1
+
+    }
+}
+
+// 2. Render side-by-side comparison for the 2 chosen attractions
+function compareSelectedAttractions() {
+    const select1 = document.getElementById('compareSelect1');
+    const select2 = document.getElementById('compareSelect2');
+    const table = document.getElementById('compare-table');
+
+    if (!select1 || !select2 || !table) return;
+
+    const item1 = attractions.find(a => a.id === select1.value);
+    const item2 = attractions.find(a => a.id === select2.value);
+
+    if (!item1 || !item2) return;
+
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>${item1.title}</th>
+                <th>${item2.title}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-label">Overview</td>
+                <td>${item1.desc}</td>
+                <td>${item2.desc}</td>
+            </tr>
+            <tr>
+                <td class="row-label">Location / Origin</td>
+                <td>${item1.location}</td>
+                <td>${item2.location}</td>
+            </tr>
+            <tr>
+                <td class="row-label">Key Fact #1</td>
+                <td>${item1.facts[0] || 'N/A'}</td>
+                <td>${item2.facts[0] || 'N/A'}</td>
+            </tr>
+            <tr>
+                <td class="row-label">Key Fact #2</td>
+                <td>${item1.facts[1] || 'N/A'}</td>
+                <td>${item2.facts[1] || 'N/A'}</td>
+            </tr>
+        </tbody>
+    `;
+}
+
+// 3. Event listener for Compare Button
+if (compareBtn) {
+    compareBtn.addEventListener('click', compareSelectedAttractions);
+}
 
 function displayFavorites() {
     //Function to display only favorites items under its own section
@@ -244,7 +292,6 @@ function displayItems(itemsToDisplay){
 
 // Build a function to dynamically build the details view cards
 function showDetails(item){
-    // let detailContainer = document.getElementById('detailContainer')
     detailContainer.innerHTML = ""
 
     let detailArticle = document.createElement('article')
@@ -284,6 +331,20 @@ function showDetails(item){
     dt.textContent = "Location / Origin"
     let dd = document.createElement('dd')
     dd.textContent = item.location
+
+    
+    let printBtn = document.createElement('button')
+    printBtn.textContent = 'Print Details'
+    printBtn.classList.add('print-btn')
+    printBtn.addEventListener('click', () => {
+        window.print()
+    })
+
+    printBtn.style.padding = "10px"
+    
+
+    body.appendChild(printBtn)
+
     dl.appendChild(dt)
     dl.appendChild(dd)
 
@@ -314,6 +375,89 @@ searchButton.addEventListener('click', (e) => {
 
 })
 
+function renderComparisonTable(){
+    let table = document.getElementById('compare-table')
+
+    if(!table){
+        console.log('No table element found.')
+        return;
+    }
+
+    // clear existing content (if any)
+    table.innerHTML = ""
+
+    let thead = document.createElement('thead')
+    let headerRow = document.createElement('tr')
+
+    const thLabel = document.createElement('th')
+    thLabel.textContent = "Feature"
+    headerRow.appendChild(thLabel)
+
+    attractions.forEach(item => {
+        let th = document.createElement('th')
+        th.textContent = item.title
+        headerRow.appendChild(th)
+    })
+
+    thead.appendChild(headerRow)
+    table.appendChild(thead)
+
+    // table body
+    let tbody = document.createElement('tbody')
+
+
+    // Row A: Location
+    let rowLocation = document.createElement('tr')
+    let locLabel = document.createElement('td')
+    locLabel.textContent = "Location / Origin"
+    locLabel.classList.add('row-label')
+    rowLocation.appendChild(locLabel)
+
+    attractions.forEach(item => {
+        let td = document.createElement('td')
+        td.textContent = item.location
+        rowLocation.appendChild(td)
+    })
+
+    tbody.appendChild(rowLocation)
+
+    // Row B: Description
+    let descRow = document.createElement('tr')
+    let descLabel = document.createElement('td')
+    descLabel.textContent = "Overview"
+    descLabel.classList.add('row-label')
+    descRow.appendChild(descLabel)
+
+    attractions.forEach(item => {
+        let td = document.createElement('td')
+        td.textContent = item.desc
+        descRow.appendChild(td)
+    })
+
+    tbody.appendChild(descRow)
+
+    // Row C: Top Highlight / Fact
+
+    let factRow = document.createElement('tr')
+    let factLabel = document.createElement('td')
+    factLabel.textContent = "Key Highlight"
+    factLabel.classList.add('row-label')
+    factRow.appendChild(factLabel)
+
+    attractions.forEach(item => {
+        let td = document.createElement('td')
+        // display the first fact from the facts array
+        td.textContent = item.facts[0] || "N/A"
+        factRow.appendChild(td)
+    })
+
+    tbody.appendChild(factRow)
+    
+    table.appendChild(tbody)
+
+}
+
 displayItems(attractions)
 displayFavorites()
-
+populateCompareDropDown()
+compareSelectedAttractions()

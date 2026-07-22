@@ -275,6 +275,62 @@ main h2 {
   font-size: 1.3rem;
   margin-bottom: 0.6rem;
 }
+.print-btn {
+  margin-top: 1.2rem;
+  padding: 0.65rem 1.4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f3efdd;
+  background-color: #26331f;
+  border: 1px solid #1a2415;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.print-btn:hover {
+  background-color: #3b4d30;
+
+  border-color: #26331f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.print-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media print{
+  /* Hides everything on the page during print*/
+  body * {
+    visibility: hidden;
+  }
+
+  /* Only show the detail container and its children*/
+  #detailContainer, #detailContainer * {
+    visibility: visible;
+  }
+
+  /* Position the detail container at the top of the printed page*/
+  #detailContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%
+  }
+
+  /* Hide the print button itself on the paper printout*/
+  .print-btn {
+    display: none;
+  }
+}
+
+
 
 .full-desc {
   font-size: 0.92rem;
@@ -336,18 +392,7 @@ main h2 {
   flex-wrap: wrap;
 }
 
-.fav-card {
-  background: #f3efdd;
-  border: 1px solid #d9d0a9;
-  border-radius: 10px;
-  width: 150px;
-  padding: 0.7rem;
-  text-align: center;
-  transition: transform 0.2s ease , box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
 
 .fav-thumb {
   height: 80px;
@@ -369,6 +414,22 @@ main h2 {
   object-position: center;
 }
 
+.fav-card {
+  position: relative;
+  background: #f3efdd;
+  border: 1px solid #d9d0a9;
+  border-radius: 10px;
+  width: 150px;
+
+  padding: 0.7rem;
+  padding-top: 32px;
+  text-align: center;
+  transition: transform 0.2s ease , box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .fav-card h4 {
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   font-size: 0.85rem;
@@ -380,21 +441,21 @@ main h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.remove-fav-btn {
-  margin-top: 0.5rem;
-  background: #a15230;
-  color: #f3efdd;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
+.remove-fav-img {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 18px;
   cursor: pointer;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: background 0.2s ease;
+  z-index: 10;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opacity 0.2s ease
 }
 
-.remove-fav-btn:hover {
-  background: #823e22;
+.remove-fav-img:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 .card .thumb img.fav-star {
   position: absolute;
@@ -409,6 +470,18 @@ main h2 {
 
 
 /* ===== COMPARISON ===== */
+.compare-controls {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.compare-table-contaiener {
+  overflow-x: auto;
+}
 .compare-table {
   width: 100%;
   border-collapse: collapse;
@@ -438,6 +511,31 @@ main h2 {
   font-size: 0.78rem;
   text-transform: uppercase;
   color: #66684f;
+}
+
+.compare-dropdown {
+  padding: 0.5rem 0.8rem;
+  font-family: 'Segoe UI' 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid #d9d0a9;
+  background: #f3efdd;
+  color: #232a1c;
+  border-radius: 4px;
+}
+
+.compare-btn {
+  font-family: 'Segoe UI' 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid #26331f;
+  color: #333;
+  padding: 0.55rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.compare-btn:hover {
+  background: #4a5d3a;
 }
 
 #how-gathered {
