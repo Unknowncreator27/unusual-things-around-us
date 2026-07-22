@@ -8,49 +8,91 @@ const compareBtn = document.getElementById('compareBtn');
 // Data array containing attractions
 const attractions = [
     {
-    id: 'noon-gun',
-    title: 'The noon gun',
-    desc: "A cannon on Signal Hill fired by hand at exactly noon every day since 1806 - most locals set their watches by it without ever seeing it.",
-    image: '../res/Cape_Town_Noon_Gun_Firing.jpg',
-    altText: "Smoke from the Noon Gun firing on Signal Hill",
-    facts: [
-        "The tradition began under British colonial rule, purely to help sailors calibrate navigation instruments.",
-        "It's still loaded and fired by hand by a small team from the SA Navy, rain or shine.",
-        "The boom is loud enough to rattle windows as far away as the City Bowl.",
-        
-    ],
-    location: "Lion Battery, Signal Hill, Cape Town - established 1806"
-},
-{
-    id: 'prestwich',
-    title: 'Prestwich Memorial',
-    desc: "Prestwich Memorial Visitors Centre entrance",
-    image: '../res/prestwich.jpg',
-    altText: "Prestwich Memorial Visitors Centre entrance",
-    facts: [
-        "It holds the remains of thousands of underrepresented VOC-eracitizens, slaves, and sailors.",
-        "It was built to provide a respectful neutral resting place rather than covering them up.",
-        "It features an outdoor memorial garden alongside an indoor reflection space."
-    ],
-    location: "Somerset Road , Green Point, Cape Town"
-},
-
-{
-    id: 'truth-coffee',
-    title: 'Truth Coffee HQ',
-    desc: "A working coffee roastery styled entirely like a Victorian steampunk workshop, gears and all, tucked into a converted warehouse.",
-    image: '../res/truth-coffee.jpg',
-    altText: "Truth Coffee moss and neon sign",
-    facts: [
-        "It has been frequently ranked by international media as one of the best coffee shops in the world",
-        "The massive functional vintage roasting machine sits right in the middle of the cafe.",
-        "Staff dress up in full steampunk gear, integrating live performance into daily service."
-    ],
-    location: "36 Buitenkant St, Cape Town CBD"
-},
-
-]
-
+        id: 'noon-gun',
+        title: 'The noon gun',
+        desc: "A cannon on Signal Hill fired by hand at exactly noon every day since 1806 - most locals set their watches by it without ever seeing it.",
+        image: '../res/Cape_Town_Noon_Gun_Firing.jpg',
+        altText: "Smoke from the Noon Gun firing on Signal Hill",
+        facts: [
+            "The tradition began under British colonial rule, purely to help sailors calibrate navigation instruments.",
+            "It's still loaded and fired by hand by a small team from the SA Navy, rain or shine.",
+            "The boom is loud enough to rattle windows as far away as the City Bowl."
+        ],
+        location: "Lion Battery, Signal Hill, Cape Town - established 1806",
+        researchLink: "https://www.navy.mil.za" // Add source/research link here
+    },
+    {
+        id: 'prestwich',
+        title: 'Prestwich Memorial',
+        desc: "Prestwich Memorial Visitors Centre entrance",
+        image: '../res/prestwich.jpg',
+        altText: "Prestwich Memorial Visitors Centre entrance",
+        facts: [
+            "It holds the remains of thousands of underrepresented VOC-era citizens, slaves, and sailors.",
+            "It was built to provide a respectful neutral resting place rather than covering them up.",
+            "It features an outdoor memorial garden alongside an indoor reflection space."
+        ],
+        location: "Somerset Road, Green Point, Cape Town",
+        researchLink: "https://www.capetown.gov.za"
+    },
+    {
+        id: 'truth-coffee',
+        title: 'Truth Coffee HQ',
+        desc: "A working coffee roastery styled entirely like a Victorian steampunk workshop, gears and all, tucked into a converted warehouse.",
+        image: '../res/truth-coffee.jpg',
+        altText: "Truth Coffee moss and neon sign",
+        facts: [
+            "It has been frequently ranked by international media as one of the best coffee shops in the world.",
+            "The massive functional vintage roasting machine sits right in the middle of the cafe.",
+            "Staff dress up in full steampunk gear, integrating live performance into daily service."
+        ],
+        location: "36 Buitenkant St, Cape Town CBD",
+        researchLink: "https://truth.capetown"
+    },
+    // --- NEW ATTRACTIONS ---
+    {
+        id: 'just-nuisance',
+        title: 'Able Seaman Just Nuisance Statue',
+        desc: "A life-sized bronze statue of the only Great Dane ever officially enlisted into the Royal Navy during WWII.",
+        image: '../res/able-seaman.jpg',
+        altText: "Bronze statue of Just Nuisance in Simon's Town",
+        facts: [
+            "He was enlisted so the Navy could pay for his train fare between Simon's Town and Cape Town.",
+            "He was treated like any sailor—complete with naval discharge papers and a official service record.",
+            "His grave on Red Hill is still visited by tourists and naval personnel today."
+        ],
+        location: "Jubilee Square, Simon's Town, Cape Town",
+        researchLink: "https://simonstown.com/just-nuisance"
+    },
+    {
+        id: 'woodstock-murals',
+        title: 'Woodstock Street Art Murals',
+        desc: "An outdoor gallery of giant, world-class street art murals transforming historic neighborhood walls into social commentary.",
+        image: '../res/woodstock-street-art.jpg',
+        altText: "Colorful street art mural on a brick wall in Woodstock",
+        facts: [
+            "Started as a community project to raise awareness for wildlife conservation and local heritage.",
+            "Features pieces created by both local South African artists and international muralists.",
+            "The artwork changes continuously as old walls are repainted with fresh stories."
+        ],
+        location: "Albert Road & surrounding lanes, Woodstock, Cape Town",
+        researchLink: "https://www.capetown.travel/woodstock-street-art"
+    },
+    {
+        id: 'underground-canals',
+        title: 'Cape Town Underground Canals',
+        desc: "A hidden network of historical stone subterranean canals flowing underneath the modern streets of Cape Town CBD.",
+        image: '../res/cape-town-canals.jpg',
+        altText: "Historic stone archways of Cape Town's underground canals",
+        facts: [
+            "Originally built by Dutch settlers in the 1600s to channel fresh water down from Table Mountain.",
+            "They were roofed over in the late 1800s due to health concerns, becoming hidden under pavement.",
+            "Guided underground walking tours allow visitors to explore the historic brick tunnels beneath the city."
+        ],
+        location: "Underneath Cape Town CBD (Tours start near Castle of Good Hope)",
+        researchLink: "https://www.goodhopeadventures.com"
+    }
+];
 
 // Helper functions
 
@@ -307,6 +349,9 @@ function showDetails(item){
     let body = document.createElement('div')
     body.classList.add('detail-body')
 
+    let detailHeader = document.createElement('div')
+    detailHeader.classList.add('detail-header')
+
     let h3 = document.createElement("h3")
     h3.textContent = item.title
 
@@ -332,6 +377,24 @@ function showDetails(item){
     let dd = document.createElement('dd')
     dd.textContent = item.location
 
+    if(item.researchLink){
+        let dtLink = document.createElement('dt')
+        dtLink.textContent = "Research Source"
+
+        let ddLink = document.createElement('dd')
+        let a = document.createElement('a')
+        a.href = item.researchLink
+        a.target = '_blank'
+        a.rel = "noopener noreferer"
+        a.textContent = " View Source "
+        a.style.color = "#4a5d3a"
+        a.style.fontWeight = "bold"
+
+        dd.appendChild(a)
+        dl.appendChild(dtLink)
+        dl.appendChild(ddLink)
+    }
+
     
     let printBtn = document.createElement('button')
     printBtn.textContent = 'Print Details'
@@ -343,16 +406,19 @@ function showDetails(item){
     printBtn.style.padding = "10px"
     
 
-    body.appendChild(printBtn)
+
+    body.appendChild(detailHeader)
 
     dl.appendChild(dt)
     dl.appendChild(dd)
 
-    body.appendChild(h3)
+    detailHeader.appendChild(h3)
+    detailHeader.appendChild(printBtn)
     body.appendChild(fullP)
     body.appendChild(h4)
     body.appendChild(ul)
     body.appendChild(dl)
+
 
     detailArticle.appendChild(thumb)
     detailArticle.appendChild(body)

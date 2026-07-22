@@ -5,11 +5,19 @@
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Georgia, 'Times New Roman', serif;
   color: #232a1c;
   background: #f3efdd;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body::before {
@@ -23,6 +31,7 @@ body::before {
 
 /* ===== HEADER ===== */
 header {
+  flex-shrink: 0;
   background: #26331f url("../res/wood.jpg");
   background-blend-mode: multiply;
   background-size: cover;
@@ -71,6 +80,7 @@ header .tagline {
 
 /* ===== NAV ===== */
 nav {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   background: #4a5d3a;
@@ -113,9 +123,11 @@ nav ul li a:hover::after {
 
 /* ===== MAIN ===== */
 main {
+  flex: 1 0 auto;
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
+  position: relative;
   
 }
 
@@ -168,10 +180,10 @@ main h2 {
 
 /* ===== RESULTS ===== */
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
 }
 
 .card {
@@ -234,7 +246,20 @@ main h2 {
 }
 
 /* ===== DETAIL ===== */
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.detail-header h3 {
+  margin: 0;
+}
+
 .detail-card {
+  position: relative;
   background: #f3efdd;
   border: 1px solid #d9d0a9;
   display: flex;
@@ -268,15 +293,16 @@ main h2 {
 .detail-body {
   flex: 1 1 260px;
 }
-
+/* 
 .detail-body h3 {
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   color: #26331f;
   font-size: 1.3rem;
   margin-bottom: 0.6rem;
-}
+} */
 .print-btn {
-  margin-top: 1.2rem;
+  position: static;
+  flex-shrink: 0;
   padding: 0.65rem 1.4rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.9rem;
@@ -290,10 +316,12 @@ main h2 {
   align-items: center;
   gap: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  z-index: 10;
 }
 
 .print-btn:hover {
   background-color: #3b4d30;
+  transform: translateY(-1px);
 
   border-color: #26331f;
   transform: translateY(-2px);
@@ -568,17 +596,19 @@ main h2 {
 }
 
 #palette-left {
-  width: 7cm;
-  height: 7cm;
+  width: 140px;
+  height: auto;
   position: absolute;     
-  left: 10%;            
+  left: -160px;
+  top: 1rem;            
 }
 
 #palette-right {
-  width: 7cm;
-  height: 7cm;
+  width: 140px;
+  height: auto;
   position: absolute;     
-  right: 10%;            
+  right: -160px;
+  top: 1rem;            
 }
 
 /* ===== FOOTER ===== */
@@ -589,4 +619,15 @@ footer {
   padding: 1.2rem;
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   font-size: 0.8rem;
+}
+
+.about-footer {
+    background: #26331f;
+    color: #a9b98a;
+    text-align: center;
+    padding: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 0.8rem;
+    align-items: bottom;
+
 }
